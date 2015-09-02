@@ -358,9 +358,12 @@ PHYSFS_sint64 __PHYSFS_platformTell(void *opaque)
 PHYSFS_sint64 __PHYSFS_platformFileLength(void *opaque)
 {
     int fd = *((int *) opaque);
-    struct stat statbuf;
-    BAIL_IF_MACRO(fstat(fd, &statbuf) == -1, strerror(errno), -1);
-    return((PHYSFS_sint64) statbuf.st_size);
+    off_t len = -1;
+    off_t cur = lseek(fd, 0, SEEK_CUR);
+
+    BAIL_IF_MACRO((len=lseek(fd, 0, SEEK_END)) == -1, strerror(errno), -1);
+    lseek(fd, cur, SEEK_SET);
+    return (PHYSFS_sint64)len;
 } /* __PHYSFS_platformFileLength */
 
 

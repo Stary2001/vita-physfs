@@ -4,8 +4,8 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_VERSION 1)
 
 # specify the cross compiler
-SET(CMAKE_C_COMPILER   $ENV{VITASDK}/bin/arm-vita-eabi-gcc)
-SET(CMAKE_CXX_COMPILER $ENV{VITASDK}/bin/arm-vita-eabi-gcc)
+SET(CMAKE_C_COMPILER   $ENV{VITASDK}/bin/arm-vita-eabi-gcc -D__vita__)
+SET(CMAKE_CXX_COMPILER $ENV{VITASDK}/bin/arm-vita-eabi-gcc -D__vita__)
 
 # where is the target environment 
 SET(CMAKE_FIND_ROOT_PATH  $ENV{VITASDK}/arm-vita-eabi/)
