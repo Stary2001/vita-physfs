@@ -400,17 +400,7 @@ int __PHYSFS_platformDelete(const char *path)
 
 PHYSFS_sint64 __PHYSFS_platformGetLastModTime(const char *fname)
 {
-    struct SceIoStat statbuf;
-    BAIL_IF_MACRO(sceIoGetstat(fname, &statbuf) < 0, "stat failed", -1);
-    PHYSFS_sint64 t = 0;
-    t += (PHYSFS_sint64)statbuf.st_mtime.year * 365 * 24 * 60 * 60;
-    t += (PHYSFS_sint64)statbuf.st_mtime.month * 30 * 24 * 60 * 60;
-    t += (PHYSFS_sint64)statbuf.st_mtime.day * 24 * 60 * 60;
-    t += (PHYSFS_sint64)statbuf.st_mtime.hour * 60 * 60;
-    t += (PHYSFS_sint64)statbuf.st_mtime.minute * 60;
-    t += (PHYSFS_sint64)statbuf.st_mtime.second;
-
-    return t;
+    return (PHYSFS_sint64)-1;
 } /* __PHYSFS_platformGetLastModTime */
 
 #ifdef PHYSFS_NO_THREAD_SUPPORT
