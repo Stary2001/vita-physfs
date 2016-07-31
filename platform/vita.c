@@ -113,7 +113,7 @@ int __PHYSFS_platformIsSymLink(const char *fname)
 {
     struct SceIoStat statbuf;
     BAIL_IF_MACRO(sceIoGetstat(fname, &statbuf) < 0, "stat failed", 0);
-    return( (PSP2_S_ISLNK(statbuf.st_mode)) ? 1 : 0 );
+    return( (SCE_S_ISLNK(statbuf.st_mode)) ? 1 : 0 );
 } /* __PHYSFS_platformIsSymlink */
 
 
@@ -121,7 +121,7 @@ int __PHYSFS_platformIsDirectory(const char *fname)
 {
     struct SceIoStat statbuf;
     BAIL_IF_MACRO(sceIoGetstat(fname, &statbuf) < 0, "stat failed", 0);
-    return( (PSP2_S_ISDIR(statbuf.st_mode)) ? 1 : 0 );
+    return( (SCE_S_ISDIR(statbuf.st_mode)) ? 1 : 0 );
 } /* __PHYSFS_platformIsDirectory */
 
 
